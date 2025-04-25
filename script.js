@@ -51,50 +51,53 @@ function setupBackgroundMusic() {
     
     if (!music || !musicBtn) return;
 
+    // 标记音乐是否已经初始化
+    let isMusicInitialized = false;
+
     // 尝试自动播放的函数
     const tryToPlay = async () => {
         try {
+            if (!isMusicInitialized) {
+                await music.load(); // 确保音乐文件已加载
+                isMusicInitialized = true;
+            }
             await music.play();
             musicBtn.classList.remove('paused');
         } catch (err) {
+            console.log('音乐播放失败，需要用户交互:', err);
             musicBtn.classList.add('paused');
         }
     };
 
-    // 多种方式尝试自动播放
-    tryToPlay();  // 首次尝试
+    // 初始化音乐
+    music.volume = 0.5; // 设置适中的音量
+    music.load();
+
+    // 页面加载完成后尝试播放
+    window.addEventListener('load', () => {
+        setTimeout(tryToPlay, 1000);
+    });
     
     // 监听页面可见性变化
     document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) {
+        if (!document.hidden && !music.paused) {
             tryToPlay();
         }
     });
 
-    // 监听页面点击
-    const pageClickHandler = () => {
+    // 用户首次点击页面时尝试播放
+    const initialPlayHandler = () => {
         tryToPlay();
-        // 一旦成功播放，就移除这些事件监听器
-        if (!music.paused) {
-            document.removeEventListener('click', pageClickHandler);
-            document.removeEventListener('touchstart', pageClickHandler);
-            window.removeEventListener('scroll', pageClickHandler);
-        }
+        // 移除所有初始播放事件监听器
+        document.removeEventListener('click', initialPlayHandler);
+        document.removeEventListener('touchstart', initialPlayHandler);
+        document.removeEventListener('scroll', initialPlayHandler);
     };
 
-    // 添加各种事件监听来尝试自动播放
-    document.addEventListener('click', pageClickHandler);
-    document.addEventListener('touchstart', pageClickHandler);
-    window.addEventListener('scroll', pageClickHandler);
-
-    // 监听音乐播放状态
-    music.addEventListener('play', () => {
-        musicBtn.classList.remove('paused');
-    });
-
-    music.addEventListener('pause', () => {
-        musicBtn.classList.add('paused');
-    });
+    // 添加用户交互事件监听
+    document.addEventListener('click', initialPlayHandler);
+    document.addEventListener('touchstart', initialPlayHandler);
+    document.addEventListener('scroll', initialPlayHandler);
 
     // 点击按钮控制音乐
     const toggleMusic = (e) => {
@@ -103,20 +106,30 @@ function setupBackgroundMusic() {
             tryToPlay();
         } else {
             music.pause();
+            musicBtn.classList.add('paused');
         }
     };
 
-    // 点击事件
+    // 音乐按钮事件
     musicBtn.addEventListener('click', toggleMusic);
-    
-    // 触摸事件
-    musicBtn.addEventListener('touchend', toggleMusic);
+    musicBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        toggleMusic(e);
+    });
 
-    // 当窗口获得焦点时尝试播放
-    window.addEventListener('focus', () => {
-        if (!music.paused) {
-            tryToPlay();
-        }
+    // 音乐状态变化监听
+    music.addEventListener('play', () => {
+        musicBtn.classList.remove('paused');
+    });
+
+    music.addEventListener('pause', () => {
+        musicBtn.classList.add('paused');
+    });
+
+    // 音乐播放错误处理
+    music.addEventListener('error', (e) => {
+        console.error('音乐加载失败:', e);
+        musicBtn.classList.add('paused');
     });
 }
 
