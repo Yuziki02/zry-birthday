@@ -693,4 +693,24 @@ function launchFirework() {
     
     // 开始动画
     requestAnimationFrame(launchAnimation);
-} 
+}
+
+// 音乐控制
+document.addEventListener('DOMContentLoaded', function() {
+    const musicButton = document.getElementById('musicButton');
+    const musicIframe = document.querySelector('iframe');
+    let isPlaying = true;
+
+    musicButton.addEventListener('click', function() {
+        if (isPlaying) {
+            // 暂停音乐
+            musicIframe.contentWindow.postMessage('{"method":"pause"}', '*');
+            musicButton.classList.add('paused');
+        } else {
+            // 播放音乐
+            musicIframe.contentWindow.postMessage('{"method":"play"}', '*');
+            musicButton.classList.remove('paused');
+        }
+        isPlaying = !isPlaying;
+    });
+}); 

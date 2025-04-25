@@ -13,12 +13,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
 <body>
-    <!-- 添加音频元素 -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="music/background.mp3" type="audio/mpeg">
-    </audio>
+    <!-- 音频部分 -->
+    <div style="display: none;">
+        <audio id="bgMusic" loop>
+            <source src="music/海の形.mp3" type="audio/mpeg">
+            您的浏览器不支持音频播放。
+        </audio>
+    </div>
 
-    <!-- 添加音乐控制按钮 -->
+    <!-- 音乐控制按钮 -->
     <button id="musicButton" class="music-button" type="button">
         <span class="music-icon">🎵</span>
     </button>
