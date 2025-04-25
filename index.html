@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="二十岁生日祝福页面，动漫主题">
+    <meta name="theme-color" content="#ff69b4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>二十岁生日祝福</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <!-- 添加音频元素 -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music/background.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 添加音乐控制按钮 -->
+    <button id="musicButton" class="music-button" type="button">
+        <span class="music-icon">🎵</span>
+    </button>
+
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <div class="birthday-container" id="birthday-container">
+        <h1 class="birthday-title animate__animated animate__fadeInDown">生日快乐！</h1>
+        <h2 class="birthday-subtitle animate__animated animate__fadeInUp">二十岁 · 崭新的开始</h2>
+        
+        <div class="scroll-indicator">
+            <p>向下滑动</p>
+            <p>记得点击一下人物图片试试</p>
+            <div class="arrow-down"></div>
+        </div>
+        
+        <!-- 第一部分：排球少年 -->
+        <section class="anime-section" id="haikyuu-section">
+            <div class="section-bg"></div>
+            <h3 class="section-title">排球少年</h3>
+            
+            <div class="characters-container">
+                <div class="character" id="hinata">
+                    <img src="images/haikyuu/hinata.png" alt="日向翔阳">
+                    <div class="speech-bubble hinata-bubble">
+                        <p>哇啊！！生日快乐！我要用最快的速度把祝福送到你身边！</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="oikawa">
+                    <img src="images/haikyuu/oikawa.png" alt="及川彻">
+                    <div class="speech-bubble oikawa-bubble">
+                        <p>生日快乐哦～小可爱～二十岁了也要继续支持小岩和我哦～</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="tsukishima">
+                    <img src="images/haikyuu/tsukishima.png" alt="月岛萤">
+                    <div class="speech-bubble tsukishima-bubble">
+                        <p>真麻烦啊...不过，生日快乐。虽然不想承认，但你确实很棒呢。</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="yamaguchi">
+                    <img src="images/haikyuu/yamaguchi.png" alt="山口忠">
+                    <div class="speech-bubble yamaguchi-bubble">
+                        <p>诶嘿嘿，二十岁生日快乐！月岛也是这么想的哦~</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第二部分：第五人格 -->
+        <section class="anime-section" id="identity-section">
+            <div class="section-bg"></div>
+            <h3 class="section-title">第五人格</h3>
+            
+            <div class="characters-container">
+                <div class="character" id="perfumer">
+                    <img src="images/identity5/perfumer.png" alt="调香师">
+                    <div class="speech-bubble perfumer-bubble">
+                        <p>我特制了这款香水，只为你的二十岁生日~愿你如花般绽放。</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="gardener">
+                    <img src="images/identity5/gardener.png" alt="园丁">
+                    <div class="speech-bubble gardener-bubble">
+                        <p>为你的二十岁，我种下了最美的花朵！生日快乐！</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="littlegirl">
+                    <img src="images/identity5/littlegirl.png" alt="小女孩">
+                    <div class="speech-bubble littlegirl-bubble">
+                        <p>生日快乐！我和奥菲都想和你一起庆祝哦～</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="acrobat">
+                    <img src="images/identity5/acrobat.png" alt="杂技演员">
+                    <div class="speech-bubble acrobat-bubble">
+                        <p>生日快乐！新赛季继续用我上分哦，我的球管够！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第三部分：银魂 -->
+        <section class="anime-section" id="gintama-section">
+            <div class="section-bg"></div>
+            <h3 class="section-title">银魂</h3>
+            
+            <div class="characters-container">
+                <div class="character" id="gintoki">
+                    <img src="images/gintama/gintoki.png" alt="坂田银时">
+                    <div class="speech-bubble gintoki-bubble">
+                        <p>喂喂，二十岁了啊？只要有草莓牛奶，生日不生日的都无所谓吧？...开玩笑的，生日快乐！</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="shinpachi">
+                    <img src="images/gintama/shinpachi.png" alt="志村新八">
+                    <div class="speech-bubble shinpachi-bubble">
+                        <p>祝你生日快乐！不要像银桑那样懒散啊！</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="hijikata">
+                    <img src="images/gintama/hijikata.png" alt="土方十四郎">
+                    <div class="speech-bubble hijikata-bubble">
+                        <p>哼，生日就生日，有什么大不了的。不过既然来了，就祝你生日快乐吧。要蘸点蛋黄酱吗？</p>
+                    </div>
+                </div>
+                
+                <div class="character" id="okita">
+                    <img src="images/gintama/okita.png" alt="冲田总悟">
+                    <div class="speech-bubble okita-bubble">
+                        <p>生日快乐。作为礼物，今天我可以不杀你...开玩笑的。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 纸条和蛋糕部分 -->
+        <section class="ending-section">
+            <div class="note-container">
+                <div class="note" id="note">
+                    <div class="note-front">
+                        <p>点击打开生日祝福</p>
+                    </div>
+                    <div class="note-back">
+                        <p class="note-message">
+                            首先先祝你二十岁生日快乐！<br><br>
+                            其次我想再为那天晚上的失态道歉，我不想因为这件事就让你以后都一直讨厌我。我记得你说过我们才玩了三天你就这样表达感情，其实我很想慢慢来，不管一年还是两年慢慢地和你相处，之所以一股脑地说出那些话是我怕以后没有机会再说了。<br><br>
+                            接下来说的话可能有点矫情，你在我的童年就像一束光一样照亮了我，再次看到你的样子听到你的声音还是会有温暖的感觉，潜意识感觉还是很想依赖你。<br><br>
+                            我冷静想了很久，最后还是舍不得离开，还是想留在你身边想办法去弥补，我不希望自己只是你人生中可以忽略的雨点。<br><br>
+                            这是我第一次给你庆祝生日，希望也不是最后一次。<br>
+                            生日礼物的话，你上号看看。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="candles">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="frosting"></div>
+                    <div class="base"></div>
+                    <div class="cake-plate"></div>
+                    <div class="cake-decoration">
+                        <div class="sprinkle"></div>
+                        <div class="sprinkle"></div>
+                        <div class="sprinkle"></div>
+                        <div class="sprinkle"></div>
+                        <div class="sprinkle"></div>
+                        <div class="sprinkle"></div>
+                        <div class="sprinkle"></div>
+                        <div class="sprinkle"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floating-balloons">
+                <div class="balloon" id="balloon1"></div>
+                <div class="balloon" id="balloon2"></div>
+                <div class="balloon" id="balloon3"></div>
+                <div class="balloon" id="balloon4"></div>
+                <div class="balloon" id="balloon5"></div>
+            </div>
+        </section>
+    </div>
+
+    <button id="firework-button" class="firework-button" type="button">放烟花</button>
+
+    <script src="script.js"></script>
+</body>
+</html> 
